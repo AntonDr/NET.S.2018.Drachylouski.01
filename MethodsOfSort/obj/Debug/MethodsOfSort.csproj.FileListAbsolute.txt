@@ -1,0 +1,9 @@
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\bin\Debug\MethodsOfSort.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\bin\Debug\MethodsOfSort.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\obj\Debug\MethodsOfSort.csproj.CoreCompileInputs.cache
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\obj\Debug\MethodsOfSort.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\obj\Debug\MethodsOfSort.pdb
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\bin\Debug\StyleCop.dll
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\bin\Debug\StyleCop.xml
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\obj\Debug\MethodsOfSort.csproj.CopyComplete
+E:\EPAM_Summer\NET.S.2018.Drachylouski.01\MethodsOfSort\obj\Debug\MethodsOfSort.csprojResolveAssemblyReference.cache
