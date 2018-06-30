@@ -1,4 +1,8 @@
-﻿namespace SortLibraryTest
+﻿using System.Linq;
+using System.Security.Cryptography;
+
+
+namespace SortLibraryTest
 {
     using System;
 
@@ -10,45 +14,32 @@
     public class SortLibraryTest
     {
         [TestCase(new int[] { 4, 2, 7, 1 }, ExpectedResult = new int[] { 1, 2, 4, 7 })]
+        [TestCase(new int[] { 1, 5, 3, -2, 0 }, ExpectedResult = new int[] { -2, 0, 1, 3, 5 })]
+        [TestCase(new int[] { 1, 1, 5, 3, -2, 0 }, ExpectedResult = new int[] { -2, 0, 1, 1, 3, 5 })]
+        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 0 }, ExpectedResult = new int[] { 0, 1, 1, 1, 1, 1, 1 })]
         public int[] SortTest1(int[] array)
         {
             array.QuickSort();
             return array;
         }
 
-        [TestCase(new int[] { 1, 5, 3, -2, 0 }, ExpectedResult = new int[] { -2, 0, 1, 3, 5 })]
-        public int[] SortTest2(int[] array)
+        [TestCase()]
+        public void SortTestOnBigSizeArray()
         {
-           array.MergeSort(0,array.Length-1);
-            return array;
-        }
+            int[] array = new int[int.MaxValue/10000];
 
-        [TestCase(new int[] { 1, 1, 5, 3, -2, 0 }, ExpectedResult = new int[] { -2, 0, 1, 1, 3, 5 })]
-        public int[] SortTest3(int[] array)
-        {
-            array.QuickSort();
-            return array;
-        }
+            Random rand = new Random();
 
-        [TestCase(new int[] { -91, 1, 52, 3, -2, 0,122222 }, ExpectedResult = new int[] { -91, -2, 0, 1, 3, 52,122222 })]
-        public int[] SortTest4(int[] array)
-        {
-            array.QuickSort();
-            return array;
-        }
+            for (int i = 0; i < array.Length; i++)
+            {
 
-        [TestCase(new int[] { 1, 1, 1,1,1,1, 0 }, ExpectedResult = new int[] { 0, 1, 1, 1, 1, 1, 1 })]
-        public int[] SortTest5(int[] array)
-        {
-            array.QuickSort();
-            return array;
-        }
+                array[i] = rand.Next(int.MinValue, int.MaxValue) - int.MaxValue / 4;
+            }
 
-        [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 0 }, ExpectedResult = new int[] { 0, 1, 1, 1, 1, 1, 1 })]
-        public int[] SortTest6(int[] array)
-        {
-            array.MergeSort();
-            return array;
+            int[] expected = array.OrderBy(i => i).ToArray();
+            MethodsOfSorting.MergeSort(array);
+
+            CollectionAssert.AreEqual(array,expected);
         }
     }
 
