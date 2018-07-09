@@ -19,14 +19,14 @@ namespace SortLibraryTest
         [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 0 }, ExpectedResult = new int[] { 0, 1, 1, 1, 1, 1, 1 })]
         public int[] SortTest1(int[] array)
         {
-            array.QuickSort();
+            MethodsOfSorting.QuickSort(array);
             return array;
         }
 
         [TestCase()]
         public void SortTestOnBigSizeArray()
         {
-            int[] array = new int[int.MaxValue/10000];
+            int[] array = new int[int.MaxValue / 10000];
 
             Random rand = new Random();
 
@@ -39,7 +39,19 @@ namespace SortLibraryTest
             int[] expected = array.OrderBy(i => i).ToArray();
             MethodsOfSorting.MergeSort(array);
 
-            CollectionAssert.AreEqual(array,expected);
+            CollectionAssert.AreEqual(array, expected);
+        }
+
+        [TestCase(null)]
+        public void ThrowsExceprionTestCase1(int[] array)
+        {
+            Assert.Throws<ArgumentNullException>(() => MethodsOfSorting.QuickSort(array));
+        }
+
+        [TestCase(new int[]{})]
+        public void ThrowsExceprionTestCase2(int[] array)
+        {
+            Assert.Throws<ArgumentException>(() => MethodsOfSorting.QuickSort(array));
         }
     }
 
