@@ -18,6 +18,7 @@ namespace MethodsOfSort
         /// <param name="array">Source array</param>
         public static void QuickSort(this int[] array)
         {
+            Validate(array);
             QuickSort(array, 0, array.Length - 1);
         }
 
@@ -29,6 +30,7 @@ namespace MethodsOfSort
         /// <param name="last">To</param>
         private static void QuickSort(int[] array, int first, int last)
         {
+            Validate(array,first,last);
 
             int m = array[(last - first) / 2 + first];
 
@@ -78,6 +80,7 @@ namespace MethodsOfSort
         /// <param name="array">Source array</param>
         public static void MergeSort(this int[] array)
         {
+            Validate(array);
             MergeSort(array, 0, array.Length - 1);
         }
 
@@ -89,6 +92,8 @@ namespace MethodsOfSort
         /// <param name="right">To</param>
         public static void MergeSort(this int[] array, int left, int right)
         {
+            Validate(array,left,right);
+
             int mid;
 
             if (right > left)
@@ -146,5 +151,38 @@ namespace MethodsOfSort
                 right--;
             }
         }
+
+        private static void Validate(int[] array)
+        {
+            if (array==null)
+            {
+                throw new ArgumentNullException($"{nameof(array)} can't be null");
+            }
+
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} can't be empty");
+            }
+
+        }
+
+        private static void Validate(int[] array, int from, int to)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException($"{nameof(array)} can't be null");
+            }
+
+            if (array.Length == 0)
+            {
+                throw new ArgumentException($"{nameof(array)} can't be empty");
+            }
+
+            if (from > array.Length || from < 0 || to > array.Length || to < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
     }
+
 }
